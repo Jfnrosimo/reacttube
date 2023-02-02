@@ -24,9 +24,9 @@ const Container = styled.div`
   top: 0;
   left: 0;
   flex: 1;
-  background-color: #202020;
+  background-color: ${({ theme }) => theme.bg};
   height: 100vh;
-  color: #f4f4f4;
+  color: ${({ theme }) => theme.text};
   font-size: 0.8rem;
 `;
 
@@ -55,7 +55,7 @@ const Item = styled.div`
 
 const Hr = styled.hr`
   margin: 15px 0;
-  border: 0.5px solid #373737;
+  border: 0.5px solid ${({ theme }) => theme.soft};
 `;
 
 const Login = styled.div`

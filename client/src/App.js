@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
+import { darkTheme, lightTheme } from "./utils/Theme";
 
 //Import components
 import Menu from "./components/Menu";
@@ -10,54 +11,57 @@ const Container = styled.div`
 
 const Main = styled.div`
   flex: 7;
+  background-color: #181818;
 `;
 
 const Wrapper = styled.div``;
 
 function App() {
   return (
-    <Container className="App">
-      <Menu />
-      <Main>
-        <Navbar />
-        <Wrapper>
-          <h1>test</h1>
-          <h1>test</h1>
-          <h1>test</h1>
-          <h1>test</h1>
-          <h1>test</h1>
-          <h1>test</h1>
-          <h1>test</h1>
-          <h1>test</h1>
-          <h1>test</h1>
-          <h1>test</h1>
-          <h1>test</h1>
-          <h1>test</h1>
-          <h1>test</h1>
-          <h1>test</h1>
-          <h1>test</h1>
-          <h1>test</h1>
-          <h1>test</h1>
-          <h1>test</h1>
-          <h1>test</h1>
-          <h1>test</h1>
-          <h1>test</h1>
-          <h1>test</h1>
-          <h1>test</h1>
-          <h1>test</h1>
-          <h1>test</h1>
-          <h1>test</h1>
-          <h1>test</h1>
-          <h1>test</h1>
-          <h1>test</h1>
-          <h1>test</h1>
-          <h1>test</h1>
-          <h1>test</h1>
-          <h1>test</h1>
-          <h1>test</h1>
-        </Wrapper>
-      </Main>
-    </Container>
+    <ThemeProvider theme={lightTheme}>
+      <Container className="App">
+        <Menu />
+        <Main>
+          <Navbar />
+          <Wrapper>
+            <h1>test</h1>
+            <h1>test</h1>
+            <h1>test</h1>
+            <h1>test</h1>
+            <h1>test</h1>
+            <h1>test</h1>
+            <h1>test</h1>
+            <h1>test</h1>
+            <h1>test</h1>
+            <h1>test</h1>
+            <h1>test</h1>
+            <h1>test</h1>
+            <h1>test</h1>
+            <h1>test</h1>
+            <h1>test</h1>
+            <h1>test</h1>
+            <h1>test</h1>
+            <h1>test</h1>
+            <h1>test</h1>
+            <h1>test</h1>
+            <h1>test</h1>
+            <h1>test</h1>
+            <h1>test</h1>
+            <h1>test</h1>
+            <h1>test</h1>
+            <h1>test</h1>
+            <h1>test</h1>
+            <h1>test</h1>
+            <h1>test</h1>
+            <h1>test</h1>
+            <h1>test</h1>
+            <h1>test</h1>
+            <h1>test</h1>
+            <h1>test</h1>
+          </Wrapper>
+        </Main>
+      </Container>
+    </ThemeProvider>
   );
 }
 
