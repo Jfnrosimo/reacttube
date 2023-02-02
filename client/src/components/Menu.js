@@ -2,14 +2,32 @@
 import styled from "styled-components";
 import logo from "../img/ytlogo.png";
 import { AiFillHome } from "react-icons/ai";
-import { MdOutlineExplore, MdOutlineSubscriptions } from "react-icons/md";
+import { IoGameControllerOutline, IoNewspaperOutline } from "react-icons/io5";
+import {
+  MdOutlineExplore,
+  MdOutlineSubscriptions,
+  MdOutlineVideoLibrary,
+  MdOutlineHistory,
+  MdOutlineLibraryMusic,
+  MdSportsBasketball,
+  MdOutlineLocalMovies,
+  MdLiveTv,
+  MdSettings,
+  MdOutlinedFlag,
+  MdHelpOutline,
+  MdOutlineLightMode,
+} from "react-icons/md";
+import { CgProfile } from "react-icons/cg";
 
 const Container = styled.div`
+  position: sticky;
+  top: 0;
+  left: 0;
   flex: 1;
   background-color: #202020;
   height: 100vh;
   color: #f4f4f4;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 `;
 
 const Wrapper = styled.div`
@@ -31,7 +49,31 @@ const Item = styled.div`
   display: flex;
   align-items: center;
   gap: 20px;
-  margin: 5px 0px;
+  padding: 5px 0px;
+  cursor: pointer;
+`;
+
+const Hr = styled.hr`
+  margin: 15px 0;
+  border: 0.5px solid #373737;
+`;
+
+const Login = styled.div`
+  font-size: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+`;
+const Button = styled.button`
+  border: 2px solid #006ee6;
+  color: #006ee6;
+  background-color: #202020;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  align-self: flex-start;
+  padding: 3px 8px;
   cursor: pointer;
 `;
 
@@ -54,6 +96,64 @@ const Menu = () => {
         <Item>
           <MdOutlineSubscriptions size={17} />
           Subscriptions
+        </Item>
+        <Hr />
+        <Item>
+          <MdOutlineVideoLibrary size={17} />
+          Library
+        </Item>
+        <Item>
+          <MdOutlineHistory size={17} />
+          History
+        </Item>
+        <Hr />
+        <Login>
+          Sign in to like videos, comment, and subscribe.
+          <Button>
+            <CgProfile /> SIGN IN
+          </Button>
+        </Login>
+        <Hr />
+        <Item>
+          <MdOutlineLibraryMusic size={17} />
+          Music
+        </Item>
+        <Item>
+          <MdSportsBasketball size={17} />
+          Sports
+        </Item>
+        <Item>
+          <IoGameControllerOutline size={17} />
+          Gaming
+        </Item>
+        <Item>
+          <MdOutlineLocalMovies size={17} />
+          Movies
+        </Item>
+        <Item>
+          <IoNewspaperOutline size={17} />
+          News
+        </Item>
+        <Item>
+          <MdLiveTv size={17} />
+          Live
+        </Item>
+        <Hr />
+        <Item>
+          <MdSettings size={17} />
+          Settings
+        </Item>
+        <Item>
+          <MdOutlinedFlag size={17} />
+          Report
+        </Item>
+        <Item>
+          <MdHelpOutline size={17} />
+          Help
+        </Item>
+        <Item>
+          <MdOutlineLightMode size={17} />
+          Light Mode
         </Item>
       </Wrapper>
     </Container>
