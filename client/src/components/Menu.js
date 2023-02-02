@@ -67,7 +67,7 @@ const Login = styled.div`
 const Button = styled.button`
   border: 2px solid #006ee6;
   color: #006ee6;
-  background-color: #202020;
+  background-color: ${({ theme }) => theme.bgLighter};
   font-weight: 700;
   display: flex;
   align-items: center;
@@ -77,7 +77,7 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-const Menu = () => {
+const Menu = ({ isDark, setIsDark }) => {
   return (
     <Container>
       <Wrapper>
@@ -151,7 +151,7 @@ const Menu = () => {
           <MdHelpOutline size={17} />
           Help
         </Item>
-        <Item>
+        <Item onClick={() => setIsDark(!isDark)}>
           <MdOutlineLightMode size={17} />
           Light Mode
         </Item>

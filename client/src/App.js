@@ -1,3 +1,6 @@
+import { useState } from "react";
+
+//Import UI
 import styled, { ThemeProvider } from "styled-components";
 import { darkTheme, lightTheme } from "./utils/Theme";
 
@@ -17,10 +20,11 @@ const Main = styled.div`
 const Wrapper = styled.div``;
 
 function App() {
+  const [isDark, setIsDark] = useState(true);
   return (
-    <ThemeProvider theme={lightTheme}>
+    <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
       <Container className="App">
-        <Menu />
+        <Menu isDark={isDark} setIsDark={setIsDark} />
         <Main>
           <Navbar />
           <Wrapper>
