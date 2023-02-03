@@ -64,6 +64,7 @@ const Login = styled.div`
   flex-direction: column;
   gap: 5px;
 `;
+
 const Button = styled.button`
   border: 2px solid #006ee6;
   color: #006ee6;
@@ -75,6 +76,13 @@ const Button = styled.button`
   align-self: flex-start;
   padding: 3px 8px;
   cursor: pointer;
+`;
+
+const H2 = styled.h2`
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #aaaaaa;
+  margin-bottom: 8px;
 `;
 
 const Menu = ({ isDark, setIsDark }) => {
@@ -114,6 +122,7 @@ const Menu = ({ isDark, setIsDark }) => {
           </Button>
         </Login>
         <Hr />
+        <H2>Best of ReactTube</H2>
         <Item>
           <MdOutlineLibraryMusic size={17} />
           Music
