@@ -24,9 +24,9 @@ const Container = styled.div`
   top: 0;
   left: 0;
   flex: 1;
-  background-color: #202020;
+  background-color: ${({ theme }) => theme.bg};
   height: 100vh;
-  color: #f4f4f4;
+  color: ${({ theme }) => theme.text};
   font-size: 0.8rem;
 `;
 
@@ -55,7 +55,7 @@ const Item = styled.div`
 
 const Hr = styled.hr`
   margin: 15px 0;
-  border: 0.5px solid #373737;
+  border: 0.5px solid ${({ theme }) => theme.soft};
 `;
 
 const Login = styled.div`
@@ -64,10 +64,11 @@ const Login = styled.div`
   flex-direction: column;
   gap: 5px;
 `;
+
 const Button = styled.button`
   border: 2px solid #006ee6;
   color: #006ee6;
-  background-color: #202020;
+  background-color: ${({ theme }) => theme.bgLighter};
   font-weight: 700;
   display: flex;
   align-items: center;
@@ -77,7 +78,14 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-const Menu = () => {
+const H2 = styled.h2`
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #aaaaaa;
+  margin-bottom: 8px;
+`;
+
+const Menu = ({ isDark, setIsDark }) => {
   return (
     <Container>
       <Wrapper>
@@ -114,6 +122,7 @@ const Menu = () => {
           </Button>
         </Login>
         <Hr />
+        <H2>Best of ReactTube</H2>
         <Item>
           <MdOutlineLibraryMusic size={17} />
           Music
@@ -151,7 +160,7 @@ const Menu = () => {
           <MdHelpOutline size={17} />
           Help
         </Item>
-        <Item>
+        <Item onClick={() => setIsDark(!isDark)}>
           <MdOutlineLightMode size={17} />
           Light Mode
         </Item>
