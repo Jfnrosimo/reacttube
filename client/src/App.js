@@ -17,7 +17,12 @@ const Main = styled.div`
   background-color: ${({ theme }) => theme.bg};
 `;
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  background-color: ${({ theme }) => theme.soft};
+  padding: 20px 90px;
+  display: flex;
+  flex-wrap: wrap;
+`;
 
 function App() {
   const [isDark, setIsDark] = useState(true);
@@ -29,7 +34,7 @@ function App() {
         <Main>
           <Navbar />
           <Wrapper>
-            <h1>test</h1>
+            <div>test</div>
             <h1>test</h1>
             <h1>test</h1>
             <h1>test</h1>
