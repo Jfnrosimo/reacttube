@@ -12,6 +12,25 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Video from "./pages/Video";
 
+//Setup routing
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+  },
+  {
+    path: "/video",
+    children: [
+      {
+        path: ":id",
+        element: <Video />,
+      },
+    ],
+  },
+]);
+
 const Container = styled.div`
   display: flex;
 `;
@@ -22,7 +41,7 @@ const Main = styled.div`
 `;
 
 const Wrapper = styled.div`
-  background-color: ${({ theme }) => theme.soft};
+  background-color: ${({ theme }) => theme.bgLighter};
   padding: 20px 90px;
 `;
 
@@ -36,14 +55,7 @@ function App() {
         <Main>
           <Navbar />
           <Wrapper>
-            <Routes>
-              <Route path="/">
-                <Route index element={<Home />} />
-                <Route path="video">
-                  <Route path=":id" element={<Video />} />
-                </Route>
-              </Route>
-            </Routes>
+            <RouterProvider router={router} />
           </Wrapper>
         </Main>
       </Container>
