@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import { Routes, Route } from "react-router-dom";
+
 //Import UI
 import styled, { ThemeProvider } from "styled-components";
 import { darkTheme, lightTheme } from "./utils/Theme";
@@ -7,6 +9,8 @@ import { darkTheme, lightTheme } from "./utils/Theme";
 //Import components
 import Menu from "./components/Menu";
 import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import Video from "./pages/Video";
 
 const Container = styled.div`
   display: flex;
@@ -20,8 +24,6 @@ const Main = styled.div`
 const Wrapper = styled.div`
   background-color: ${({ theme }) => theme.soft};
   padding: 20px 90px;
-  display: flex;
-  flex-wrap: wrap;
 `;
 
 function App() {
@@ -34,40 +36,14 @@ function App() {
         <Main>
           <Navbar />
           <Wrapper>
-            <div>test</div>
-            <h1>test</h1>
-            <h1>test</h1>
-            <h1>test</h1>
-            <h1>test</h1>
-            <h1>test</h1>
-            <h1>test</h1>
-            <h1>test</h1>
-            <h1>test</h1>
-            <h1>test</h1>
-            <h1>test</h1>
-            <h1>test</h1>
-            <h1>test</h1>
-            <h1>test</h1>
-            <h1>test</h1>
-            <h1>test</h1>
-            <h1>test</h1>
-            <h1>test</h1>
-            <h1>test</h1>
-            <h1>test</h1>
-            <h1>test</h1>
-            <h1>test</h1>
-            <h1>test</h1>
-            <h1>test</h1>
-            <h1>test</h1>
-            <h1>test</h1>
-            <h1>test</h1>
-            <h1>test</h1>
-            <h1>test</h1>
-            <h1>test</h1>
-            <h1>test</h1>
-            <h1>test</h1>
-            <h1>test</h1>
-            <h1>test</h1>
+            <Routes>
+              <Route path="/">
+                <Route index element={<Home />} />
+                <Route path="video">
+                  <Route path=":id" element={<Video />} />
+                </Route>
+              </Route>
+            </Routes>
           </Wrapper>
         </Main>
       </Container>
