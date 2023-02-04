@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+//Import routing
 import { Routes, Route } from "react-router-dom";
 
 //Import UI
@@ -11,25 +12,6 @@ import Menu from "./components/Menu";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Video from "./pages/Video";
-
-//Setup routing
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Home />,
-  },
-  {
-    path: "/video",
-    children: [
-      {
-        path: ":id",
-        element: <Video />,
-      },
-    ],
-  },
-]);
 
 const Container = styled.div`
   display: flex;
@@ -55,7 +37,12 @@ function App() {
         <Main>
           <Navbar />
           <Wrapper>
-            <RouterProvider router={router} />
+            <Routes>
+              <Route index element={<Home />} />
+              <Route path="/video">
+                <Route path=":id" element={<Video />} />
+              </Route>
+            </Routes>
           </Wrapper>
         </Main>
       </Container>
