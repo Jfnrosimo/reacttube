@@ -19,6 +19,9 @@ import {
 } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
 
+//Import routing
+import { Link } from "react-router-dom";
+
 const Container = styled.div`
   position: sticky;
   top: 0;
@@ -89,10 +92,12 @@ const Menu = ({ isDark, setIsDark }) => {
   return (
     <Container>
       <Wrapper>
-        <Logo>
-          <Img src={logo} />
-          ReactTube
-        </Logo>
+        <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
+          <Logo>
+            <Img src={logo} />
+            ReactTube
+          </Logo>
+        </Link>
         <Item>
           <AiFillHome size={17} />
           Home

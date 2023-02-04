@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+//Import routing
 import { Routes, Route } from "react-router-dom";
 
 //Import UI
@@ -22,7 +23,7 @@ const Main = styled.div`
 `;
 
 const Wrapper = styled.div`
-  background-color: ${({ theme }) => theme.soft};
+  background-color: ${({ theme }) => theme.bgLighter};
   padding: 20px 90px;
 `;
 
@@ -37,11 +38,9 @@ function App() {
           <Navbar />
           <Wrapper>
             <Routes>
-              <Route path="/">
-                <Route index element={<Home />} />
-                <Route path="video">
-                  <Route path=":id" element={<Video />} />
-                </Route>
+              <Route index element={<Home />} />
+              <Route path="/video">
+                <Route path=":id" element={<Video />} />
               </Route>
             </Routes>
           </Wrapper>
