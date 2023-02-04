@@ -33,9 +33,9 @@ const Views = styled.span`
 `;
 
 const Buttons = styled.div`
-  color: ${({ theme }) => theme.text};
   display: flex;
   gap: 15px;
+  color: ${({ theme }) => theme.text};
 `;
 const Button = styled.div`
   display: flex;
@@ -44,9 +44,26 @@ const Button = styled.div`
   cursor: pointer;
 `;
 
+const Hr = styled.hr`
+  margin: 15px 0px;
+  border: 0.5px solid ${({ theme }) => theme.soft};
+`;
+
 const Recommendation = styled.div`
   flex: 2;
 `;
+const Channel = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const ChannelInfo = styled.div``;
+const Image = styled.img``;
+const CreatorContainer = styled.div``;
+const CreatorName = styled.span``;
+const CreatorCounter = styled.span``;
+const Description = styled.p``;
+const Subscribe = styled.button``;
 
 const Video = () => {
   return (
@@ -81,6 +98,11 @@ const Video = () => {
             </Button>
           </Buttons>
         </Details>
+        <Hr />
+        <Channel>
+          <ChannelInfo></ChannelInfo>
+          <Subscribe>SUBSCRIBE</Subscribe>
+        </Channel>
       </Content>
       <Recommendation>Recommendationsssss</Recommendation>
     </Container>
