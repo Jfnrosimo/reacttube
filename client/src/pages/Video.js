@@ -27,6 +27,7 @@ const Details = styled.div`
   display: flex;
   justify-content: space-between;
 `;
+
 const Views = styled.span`
   font-size: 0.8rem;
   color: ${({ theme }) => theme.textSoft};
@@ -37,6 +38,7 @@ const Buttons = styled.div`
   gap: 15px;
   color: ${({ theme }) => theme.text};
 `;
+
 const Button = styled.div`
   display: flex;
   align-items: center;
@@ -52,18 +54,50 @@ const Hr = styled.hr`
 const Recommendation = styled.div`
   flex: 2;
 `;
+
 const Channel = styled.div`
   display: flex;
   justify-content: space-between;
+  color: ${({ theme }) => theme.text};
 `;
 
-const ChannelInfo = styled.div``;
-const Image = styled.img``;
-const CreatorContainer = styled.div``;
+const ChannelInfo = styled.div`
+  display: flex;
+  gap: 10px;
+`;
+
+const Image = styled.img`
+  width: 35px;
+  height: 35px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-top: 7px;
+`;
+
+const CreatorContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 const CreatorName = styled.span``;
-const CreatorCounter = styled.span``;
-const Description = styled.p``;
-const Subscribe = styled.button``;
+
+const CreatorCounter = styled.span`
+  color: ${({ theme }) => theme.textSoft};
+  font-size: 0.8rem;
+`;
+
+const Description = styled.p`
+  color: ${({ theme }) => theme.text};
+`;
+
+const Subscribe = styled.button`
+  height: 30px;
+  background-color: #ca0008;
+  border: none;
+  border-radius: 3px;
+  color: ${({ theme }) => theme.text};
+  cursor: pointer;
+`;
 
 const Video = () => {
   return (
@@ -100,9 +134,21 @@ const Video = () => {
         </Details>
         <Hr />
         <Channel>
-          <ChannelInfo></ChannelInfo>
+          <ChannelInfo>
+            <Image src="https://res.cloudinary.com/dcmmsky2x/image/upload/c_thumb,w_200,g_face/v1675133469/samples/bike.jpg" />
+            <CreatorContainer>
+              <CreatorName>Jeppe</CreatorName>
+              <CreatorCounter>125k subscribers</CreatorCounter>
+              <Description>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Nesciunt voluptate facilis voluptatem, eligendi voluptas
+                molestias.
+              </Description>
+            </CreatorContainer>
+          </ChannelInfo>
           <Subscribe>SUBSCRIBE</Subscribe>
         </Channel>
+        <Hr />
       </Content>
       <Recommendation>Recommendationsssss</Recommendation>
     </Container>
