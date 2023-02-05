@@ -2,21 +2,25 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const Container = styled.div`
-  width: 260px;
-  margin-bottom: 30px;
+  width: ${(props) => (props.type === "sm" ? "100%" : "260px")};
+  margin-bottom: ${(props) => (props.type === "sm" ? "7px" : "30px")};
+  display: ${(props) => props.type === "sm" && "flex"};
+  gap: 15px;
 `;
 
 const Image = styled.img`
   width: 100%;
-  height: 170px;
+  height: ${(props) => (props.type === "sm" ? "100px" : "170px")};
   background-color: #999;
-  border-radius: 15px;
+  border-radius: ${(props) => (props.type === "sm" ? "5px" : "15px")};
+  flex: 1;
 `;
 
 const Details = styled.div`
   display: flex;
-  margin-top: 8px;
+  margin-top: ${(props) => (props.type === "sm" ? "0px" : "8px")};
   gap: 10px;
+  flex: 1;
 `;
 
 const ImgProfile = styled.img`
@@ -24,6 +28,7 @@ const ImgProfile = styled.img`
   height: 30px;
   border-radius: 50%;
   object-fit: cover;
+  display: ${(props) => (props.type === "sm" ? "none" : "")};
 `;
 
 const Description = styled.div`
@@ -34,30 +39,37 @@ const Description = styled.div`
 const Title = styled.p`
   margin: 0;
   color: ${({ theme }) => theme.text};
+  font-size: ${(props) => (props.type === "sm" ? "0.9rem" : "")};
 `;
 
 const Creator = styled.p`
   margin: 6px 0;
-  font-size: 0.9rem;
+  font-size: ${(props) => (props.type === "sm" ? "0.8rem" : "0.9rem")};
   color: ${({ theme }) => theme.text};
 `;
 
 const Views = styled.span`
-  font-size: 0.8rem;
+  font-size: ${(props) => (props.type === "sm" ? "0.7rem" : "0.9rem")};
   color: ${({ theme }) => theme.textSoft};
 `;
 
-const VideoCard = () => {
+const VideoCard = ({ type }) => {
   return (
     <Link to="/video/test" style={{ textDecoration: "none" }}>
-      <Container>
-        <Image src="https://res.cloudinary.com/dcmmsky2x/image/upload/v1675133467/samples/sheep.jpg" />
-        <Details>
-          <ImgProfile src="https://res.cloudinary.com/dcmmsky2x/image/upload/c_thumb,w_200,g_face/v1675133469/samples/bike.jpg" />
+      <Container type={type}>
+        <Image
+          type={type}
+          src="https://res.cloudinary.com/dcmmsky2x/image/upload/v1675133467/samples/sheep.jpg"
+        />
+        <Details type={type}>
+          <ImgProfile
+            type={type}
+            src="https://res.cloudinary.com/dcmmsky2x/image/upload/c_thumb,w_200,g_face/v1675133469/samples/bike.jpg"
+          />
           <Description>
-            <Title>A day in the life of a sheep</Title>
-            <Creator>Jeppee</Creator>
-            <Views>505,123 views &#x2022; 1 day ago</Views>
+            <Title type={type}>A day in the life of a sheep</Title>
+            <Creator type={type}>Jeppee</Creator>
+            <Views type={type}>505,123 views &#x2022; 1 day ago</Views>
           </Description>
         </Details>
       </Container>
