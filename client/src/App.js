@@ -12,6 +12,7 @@ import Menu from "./components/Menu";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Video from "./pages/Video";
+import Login from "./pages/Login";
 
 const Container = styled.div`
   display: flex;
@@ -39,6 +40,7 @@ function App() {
           <Wrapper>
             <Routes>
               <Route index element={<Home />} />
+              <Route path="/signin" element={<Login />} />
               <Route path="/video">
                 <Route path=":id" element={<Video />} />
               </Route>
