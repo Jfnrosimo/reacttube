@@ -5,6 +5,7 @@ import {
   MdOutlineThumbDownOffAlt,
 } from "react-icons/md";
 import { RiPlayListAddLine, RiShareForwardLine } from "react-icons/ri";
+import Comments from "../components/Comments";
 
 const Container = styled.div`
   display: flex;
@@ -149,6 +150,7 @@ const Video = () => {
           <Subscribe>SUBSCRIBE</Subscribe>
         </Channel>
         <Hr />
+        <Comments />
       </Content>
       <Recommendation>Recommendationsssss</Recommendation>
     </Container>
