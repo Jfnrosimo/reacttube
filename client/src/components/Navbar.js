@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { MdOutlineSearch } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
 
+import { Link } from "react-router-dom";
+
 const Container = styled.div`
   padding: 8px 20px 5px 0px;
   background-color: ${({ theme }) => theme.bg};
@@ -60,9 +62,11 @@ const Navbar = () => {
             <MdOutlineSearch size={20} />
           </IconContainer>
         </InputContainer>
-        <Button>
-          <CgProfile /> SIGN IN
-        </Button>
+        <Link to="/signin" style={{ textDecoration: "none" }}>
+          <Button>
+            <CgProfile /> SIGN IN
+          </Button>
+        </Link>
       </Wrapper>
     </Container>
   );

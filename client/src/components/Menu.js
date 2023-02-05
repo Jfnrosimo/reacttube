@@ -126,9 +126,11 @@ const Menu = ({ isDark, setIsDark }) => {
         <Hr />
         <Login>
           Sign in to like videos, comment, and subscribe.
-          <Button>
-            <CgProfile /> SIGN IN
-          </Button>
+          <Link to="/signin" style={{ textDecoration: "none" }}>
+            <Button>
+              <CgProfile /> SIGN IN
+            </Button>
+          </Link>
         </Login>
         <Hr />
         <H2>Best of ReactTube</H2>
