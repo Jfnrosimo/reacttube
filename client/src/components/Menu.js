@@ -167,7 +167,7 @@ const Menu = ({ isDark, setIsDark }) => {
         </Item>
         <Item onClick={() => setIsDark(!isDark)}>
           <MdOutlineLightMode size={17} />
-          Light Mode
+          {isDark ? "Light" : "Dark"} Mode
         </Item>
       </Wrapper>
     </Container>
