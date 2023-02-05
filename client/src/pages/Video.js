@@ -5,7 +5,10 @@ import {
   MdOutlineThumbDownOffAlt,
 } from "react-icons/md";
 import { RiPlayListAddLine, RiShareForwardLine } from "react-icons/ri";
+
+//Import components
 import Comments from "../components/Comments";
+import VideoCard from "../components/VideoCard";
 
 const Container = styled.div`
   display: flex;
@@ -152,7 +155,17 @@ const Video = () => {
         <Hr />
         <Comments />
       </Content>
-      <Recommendation>Recommendationsssss</Recommendation>
+      <Recommendation>
+        <VideoCard type="sm" />
+        <VideoCard type="sm" />
+        <VideoCard type="sm" />
+        <VideoCard type="sm" />
+        <VideoCard type="sm" />
+        <VideoCard type="sm" />
+        <VideoCard type="sm" />
+        <VideoCard type="sm" />
+        <VideoCard type="sm" />
+      </Recommendation>
     </Container>
   );
 };
