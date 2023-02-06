@@ -27,12 +27,13 @@ export const signin = async (req, res, next) => {
     if (!isCorrect) return next(createError(400, "Wrong credentials!"));
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET_KEY);
+    const { password, ...others } = user._id;
     res
       .cookie("access_token", token, {
         httpOnly: true,
       })
       .status(200)
-      .json(user);
+      .json(others);
   } catch (error) {
     next(error);
   }
