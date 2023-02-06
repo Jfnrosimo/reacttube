@@ -1,11 +1,13 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
 
 //import routes
 import userRoutes from "./routes/users.js";
 import commentRoutes from "./routes/comments.js";
 import videoRoutes from "./routes/videos.js";
+import authRoutes from "./routes/auth.js";
 
 dotenv.config();
 const app = express();
@@ -19,9 +21,22 @@ const connect = () => {
     .catch((error) => console.log(error));
 };
 
+app.use(cookieParser());
+app.use(express.json());
 app.use("/api/users", userRoutes);
 app.use("/api/comments", commentRoutes);
 app.use("/api/videos", videoRoutes);
+app.use("/api/auth", authRoutes);
+
+app.use((error, req, res, next) => {
+  const status = error.status || 500;
+  const message = error.message || "Something went wrong!";
+  return res.status(status).send({
+    success: false,
+    status: status,
+    message: message,
+  });
+});
 
 app.listen(8000, () => {
   connect();
