@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
 
 //import routes
 import userRoutes from "./routes/users.js";
@@ -20,6 +21,7 @@ const connect = () => {
     .catch((error) => console.log(error));
 };
 
+app.use(cookieParser());
 app.use(express.json());
 app.use("/api/users", userRoutes);
 app.use("/api/comments", commentRoutes);
