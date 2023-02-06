@@ -20,10 +20,21 @@ const connect = () => {
     .catch((error) => console.log(error));
 };
 
+app.use(express.json());
 app.use("/api/users", userRoutes);
 app.use("/api/comments", commentRoutes);
 app.use("/api/videos", videoRoutes);
 app.use("/api/auth", authRoutes);
+
+app.use((error, req, res, next) => {
+  const status = error.status || 500;
+  const message = error.message || "Something went wrong!";
+  return res.status(status).send({
+    success: false,
+    status: status,
+    message: message,
+  });
+});
 
 app.listen(8000, () => {
   connect();
