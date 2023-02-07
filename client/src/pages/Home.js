@@ -33,7 +33,7 @@ const Home = ({ type }) => {
   return (
     <Container>
       {videos.map((video) => (
-        <VideoCard key={video._id} />
+        <VideoCard key={video._id} video={video} />
       ))}
     </Container>
   );

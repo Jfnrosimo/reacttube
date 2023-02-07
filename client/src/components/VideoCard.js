@@ -1,5 +1,10 @@
-import styled from "styled-components";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+
+//Import UI
+import styled from "styled-components";
+import { format } from "timeago.js";
 
 const Container = styled.div`
   width: ${(props) => (props.type === "sm" ? "100%" : "260px")};
@@ -53,23 +58,35 @@ const Views = styled.span`
   color: ${({ theme }) => theme.textSoft};
 `;
 
-const VideoCard = ({ type }) => {
+const VideoCard = ({ type, video }) => {
+  const [channel, setChannel] = useState({});
+
+  useEffect(() => {
+    const fetchChannel = async () => {
+      try {
+        const res = await axios.get(
+          `http://localhost:8000/api/users/find/${video.userId}`
+        );
+        setChannel(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchChannel();
+  }, [video.userId]);
+
   return (
     <Link to="/video/test" style={{ textDecoration: "none" }}>
       <Container type={type}>
-        <Image
-          type={type}
-          src="https://res.cloudinary.com/dcmmsky2x/image/upload/v1675133467/samples/sheep.jpg"
-        />
+        <Image type={type} src={video.imgUrl} />
         <Details type={type}>
-          <ImgProfile
-            type={type}
-            src="https://res.cloudinary.com/dcmmsky2x/image/upload/c_thumb,w_200,g_face/v1675133469/samples/bike.jpg"
-          />
+          <ImgProfile type={type} src={channel.img} />
           <Description>
-            <Title type={type}>A day in the life of a sheep</Title>
-            <Creator type={type}>Jeppee</Creator>
-            <Views type={type}>505,123 views &#x2022; 1 day ago</Views>
+            <Title type={type}>{video.title}</Title>
+            <Creator type={type}>{channel.name}</Creator>
+            <Views type={type}>
+              {video.views} views &#x2022; {format(video.createdAt)}
+            </Views>
           </Description>
         </Details>
       </Container>
