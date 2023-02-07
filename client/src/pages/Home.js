@@ -15,25 +15,25 @@ const Container = styled.div`
   gap: 15px;
 `;
 
-const Home = () => {
+const Home = ({ type }) => {
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
     const fetchVideos = async () => {
       try {
-        const res = await axios.get("http://localhost:8000/api/videos/random");
+        const res = await axios.get(`http://localhost:8000/api/videos/${type}`);
         setVideos(res.data);
       } catch (error) {
         console.log(error);
       }
     };
     fetchVideos();
-  }, []);
+  }, [type]);
 
   return (
     <Container>
       {videos.map((video) => (
-        <VideoCard />
+        <VideoCard key={video._id} />
       ))}
     </Container>
   );

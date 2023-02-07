@@ -39,7 +39,9 @@ function App() {
           <Navbar />
           <Wrapper>
             <Routes>
-              <Route index element={<Home />} />
+              <Route index element={<Home type="random" />} />
+              <Route path="trends" element={<Home type="trend" />} />
+              <Route path="subscriptions" element={<Home type="sub" />} />
               <Route path="/signin" element={<Login />} />
               <Route path="/video">
                 <Route path=":id" element={<Video />} />
