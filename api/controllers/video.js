@@ -85,14 +85,42 @@ export const getTrend = async (req, res, next) => {
 
 export const getSub = async (req, res, next) => {
   try {
-    const user = await User.findByIdAnd(req.user.id);
+    const user = await User.findById(req.user.id);
     const subscribedChannels = user.subscribedUsers;
-    const list = Promise.all(
+    const list = await Promise.all(
       subscribedChannels.map((channelId) => {
         return Video.find({ userId: channelId });
       })
     );
-    res.status(200).json(list);
+    res.status(200).json(list.flat().sort((a, b) => b.createdAt - a.createdAt));
+  } catch (error) {
+    next(error);
+  }
+};
+export const getByTag = async (req, res, next) => {
+  try {
+    const user = await User.findById(req.user.id);
+    const subscribedChannels = user.subscribedUsers;
+    const list = await Promise.all(
+      subscribedChannels.map((channelId) => {
+        return Video.find({ userId: channelId });
+      })
+    );
+    res.status(200).json();
+  } catch (error) {
+    next(error);
+  }
+};
+export const getBySearch = async (req, res, next) => {
+  try {
+    const user = await User.findById(req.user.id);
+    const subscribedChannels = user.subscribedUsers;
+    const list = await Promise.all(
+      subscribedChannels.map((channelId) => {
+        return Video.find({ userId: channelId });
+      })
+    );
+    res.status(200).json();
   } catch (error) {
     next(error);
   }

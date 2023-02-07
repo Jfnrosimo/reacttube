@@ -5,6 +5,8 @@ import {
   addVideo,
   addView,
   deleteVideo,
+  getBySearch,
+  getByTag,
   getRandom,
   getSub,
   getTrend,
@@ -23,5 +25,7 @@ router.put("/view/:id", addView);
 router.get("/random", getRandom);
 router.get("/trend", getTrend);
 router.get("/sub", verifyToken, getSub); //Get videos from subbed channel
+router.get("/tags", getByTag);
+router.get("/search", getBySearch);
 
 export default router;
