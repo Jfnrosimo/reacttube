@@ -1,3 +1,7 @@
+import { useEffect } from "react";
+import { useState } from "react";
+import axios from "axios";
+
 //Import UI
 import styled from "styled-components";
 
@@ -12,53 +16,25 @@ const Container = styled.div`
 `;
 
 const Home = () => {
+  const [videos, setVideos] = useState([]);
+
+  useEffect(() => {
+    const fetchVideos = async () => {
+      try {
+        const res = await axios.get("http://localhost:8000/api/videos/random");
+        setVideos(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchVideos();
+  }, []);
+
   return (
     <Container>
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
+      {videos.map((video) => (
+        <VideoCard />
+      ))}
     </Container>
   );
 };
