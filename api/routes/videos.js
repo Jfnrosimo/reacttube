@@ -22,6 +22,6 @@ router.get("/find/:id", verifyToken, getVideo);
 router.put("/view/:id", addView);
 router.get("/random", getRandom);
 router.get("/trend", getTrend);
-router.get("/sub", getSub);
+router.get("/sub", verifyToken, getSub); //Get videos from subbed channel
 
 export default router;

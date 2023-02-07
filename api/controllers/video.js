@@ -1,5 +1,6 @@
 import { createError } from "../error.js";
 import Video from "../models/Video.js";
+import User from "../models/User.js";
 
 export const addVideo = async (req, res, next) => {
   const newVideo = new Video({ userId: req.user.id, ...req.body });
@@ -57,8 +58,8 @@ export const getVideo = async (req, res, next) => {
 
 export const addView = async (req, res, next) => {
   try {
-    const video = await Video.findById(req.params.id);
-    res.status(200).json(video);
+    await Video.findByIdAndUpdate(req.params.id, { $inc: { views } });
+    res.status(200).json("The view has been increased!");
   } catch (error) {
     next(error);
   }
@@ -66,8 +67,8 @@ export const addView = async (req, res, next) => {
 
 export const getRandom = async (req, res, next) => {
   try {
-    const video = await Video.findById(req.params.id);
-    res.status(200).json(video);
+    const videos = await Video.aggregate([{ $sample: { size: 40 } }]);
+    res.status(200).json(videos);
   } catch (error) {
     next(error);
   }
@@ -75,8 +76,8 @@ export const getRandom = async (req, res, next) => {
 
 export const getTrend = async (req, res, next) => {
   try {
-    const video = await Video.findById(req.params.id);
-    res.status(200).json(video);
+    const videos = await Video.find().sort({ views: -1 });
+    res.status(200).json(videos);
   } catch (error) {
     next(error);
   }
@@ -84,8 +85,14 @@ export const getTrend = async (req, res, next) => {
 
 export const getSub = async (req, res, next) => {
   try {
-    const video = await Video.findById(req.params.id);
-    res.status(200).json(video);
+    const user = await User.findByIdAnd(req.user.id);
+    const subscribedChannels = user.subscribedUsers;
+    const list = Promise.all(
+      subscribedChannels.map((channelId) => {
+        return Video.find({ userId: channelId });
+      })
+    );
+    res.status(200).json(list);
   } catch (error) {
     next(error);
   }
