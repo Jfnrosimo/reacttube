@@ -106,14 +106,21 @@ const Menu = ({ isDark, setIsDark }) => {
           <AiFillHome size={17} />
           Home
         </Item>
-        <Item>
-          <MdOutlineExplore size={17} />
-          Explore
-        </Item>
-        <Item>
-          <MdOutlineSubscriptions size={17} />
-          Subscriptions
-        </Item>
+        <Link to="/trends" style={{ textDecoration: "none", color: "inherit" }}>
+          <Item>
+            <MdOutlineExplore size={17} />
+            Explore
+          </Item>
+        </Link>
+        <Link
+          to="/subscriptions"
+          style={{ textDecoration: "none", color: "inherit" }}
+        >
+          <Item>
+            <MdOutlineSubscriptions size={17} />
+            Subscriptions
+          </Item>
+        </Link>
         <Hr />
         <Item>
           <MdOutlineVideoLibrary size={17} />
