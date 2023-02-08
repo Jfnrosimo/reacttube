@@ -4,7 +4,8 @@ import axios from "axios";
 
 //Import UI
 import styled from "styled-components";
-import { format } from "timeago.js";
+import moment from "moment";
+
 
 const Container = styled.div`
   width: ${(props) => (props.type === "sm" ? "100%" : "260px")};
@@ -61,6 +62,9 @@ const Views = styled.span`
 const VideoCard = ({ type, video }) => {
   const [channel, setChannel] = useState({});
 
+  //Format date on when was it uploaded
+  const dateFromNow = moment(video.createdAt).fromNow();
+
   useEffect(() => {
     const fetchChannel = async () => {
       try {
@@ -85,7 +89,7 @@ const VideoCard = ({ type, video }) => {
             <Title type={type}>{video.title}</Title>
             <Creator type={type}>{channel.name}</Creator>
             <Views type={type}>
-              {video.views} views &#x2022; {format(video.createdAt)}
+              {video.views} views &#x2022; {dateFromNow}
             </Views>
           </Description>
         </Details>
